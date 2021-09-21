@@ -6,29 +6,92 @@ from typing import List
 
 
 def convert_to_absolute(number: float) -> float:
-    return 0
+    if number<0:
+        return (-1*number)
+    else:
+        return number
 
 
 def use_prefixes() -> List[str]:
     prefixes, suffixe = 'JKLMNOPQ', 'ack'
-
-    return [""]
+    names=[]
+    for letter in prefixes:
+        names.append(letter+suffixe)
+    return names
 
 
 def prime_integer_summation() -> int:
-    return 0
+    sum=2
+    prime_numbers_used=1
+    number=2
+    while prime_numbers_used<100:
+        number+=1
+        for index in range(2,number):
+            if number%index!=0:
+                if(number==index+1):
+                    sum+=number
+                    prime_numbers_used+=1
+                    continue
+            else:
+                break
+                
+        
+    return sum
 
 
 def factorial(number: int) -> int:
-    return 0
+    product=1
+    for index in range(1,number+1):
+        product*=index
+    return product
 
 
 def use_continue() -> None:
+    for number in range(1,11):
+        if number==5:
+            continue
+        print(number)
     pass
 
 
 def verify_ages(groups: List[List[int]]) -> List[bool]:
-    return []
+    boolean_list=[]
+    index_integer=0
+    for index_list in groups:
+        if len(index_list)<=3 or len(index_list)>10:
+            boolean_list.append(False)
+            
+        #vérifier si on n'a pas ajouté quelque chose à boolean_list
+        if len(boolean_list)==index_integer:
+            for element in index_list:
+                if element==25:
+                    boolean_list.append(True)
+                    break
+
+        #vérifier si on n'a pas ajouté quelque chose à boolean_list
+        if len(boolean_list)==index_integer:
+            for element in index_list:
+                if element<18:
+                    boolean_list.append(False)
+                    break
+
+        #vérifier si on n'a pas ajouté quelque chose à boolean_list
+        if len(boolean_list)==index_integer:
+            plus_de_70_ans=False
+            exactement_50_ans=False
+            for element in index_list:
+                if element==50:
+                    exactement_50_ans=True
+                if element>70:
+                    plus_de_70_ans=True
+            if(plus_de_70_ans and exactement_50_ans):
+                boolean_list.append(False)
+                index_integer+=1
+            else:
+                boolean_list.append(True)
+        index_integer+=1
+
+    return boolean_list
 
 
 def main() -> None:
